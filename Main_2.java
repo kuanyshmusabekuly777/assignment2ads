@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Main {
 
-    // ── Shared data structures ──────────────────────────────────────────────
+    // Shared data structures
     static LinkedList<BankAccount>  accounts        = new LinkedList<>();
     static Stack<String>            transactionHistory = new Stack<>();
     static Queue<String>            billQueue       = new LinkedList<>();
@@ -11,9 +11,7 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     static int     nextAccountNumber = 1001;
 
-    // ═══════════════════════════════════════════════════════════════════════
     // MAIN MENU
-    // ═══════════════════════════════════════════════════════════════════════
     public static void main(String[] args) {
 
         // Task 6 – pre-load 3 predefined accounts (Physical / Array)
@@ -31,14 +29,11 @@ public class Main {
 
         // Main loop
         while (true) {
-            System.out.println("\n╔══════════════════════════╗");
-            System.out.println("║      MAIN MENU           ║");
-            System.out.println("╠══════════════════════════╣");
-            System.out.println("║  1 -- Enter Bank         ║");
-            System.out.println("║  2 -- Enter ATM          ║");
-            System.out.println("║  3 -- Admin Area         ║");
-            System.out.println("║  4 -- Exit               ║");
-            System.out.println("╚══════════════════════════╝");
+            System.out.println("MAIN MENU");
+            System.out.println("1 -- Enter Bank");
+            System.out.println("2 -- Enter ATM");
+            System.out.println("3 -- Admin Area");
+            System.out.println("4 -- Exit");
             System.out.print("Choose: ");
 
             int choice = readInt();
@@ -52,9 +47,7 @@ public class Main {
         }
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
     // BANK MENU  (Tasks 1, 2, 3, 5)
-    // ═══════════════════════════════════════════════════════════════════════
     static void bankMenu() {
         while (true) {
             System.out.println("\n--- Bank Menu ---");
@@ -87,9 +80,7 @@ public class Main {
         }
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
     // ATM MENU
-    // ═══════════════════════════════════════════════════════════════════════
     static void atmMenu() {
         while (true) {
             System.out.println("\n--- ATM Menu ---");
@@ -108,9 +99,7 @@ public class Main {
         }
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
     // ADMIN MENU  (Tasks 4, 5)
-    // ═══════════════════════════════════════════════════════════════════════
     static void adminMenu() {
         while (true) {
             System.out.println("\n--- Admin Menu ---");
@@ -133,9 +122,7 @@ public class Main {
         }
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
     // TASK 1 – LinkedList: add / display / search
-    // ═══════════════════════════════════════════════════════════════════════
     static void addAccount() {
         System.out.print("Username: ");
         String name = scanner.nextLine().trim();
@@ -164,9 +151,7 @@ public class Main {
         else               System.out.println("Account not found.");
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
     // TASK 2 – Deposit & Withdraw
-    // ═══════════════════════════════════════════════════════════════════════
     static void deposit() {
         System.out.print("Enter username: ");
         String name = scanner.nextLine().trim();
@@ -202,9 +187,7 @@ public class Main {
         System.out.println("New balance: " + (int) ba.getBalance());
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
     // TASK 3 – Stack: transaction history
-    // ═══════════════════════════════════════════════════════════════════════
     static void showTransactionHistory() {
         if (transactionHistory.isEmpty()) { System.out.println("No transactions yet."); return; }
         System.out.println("\nTransaction History (most recent first):");
@@ -221,9 +204,7 @@ public class Main {
         // Note: actual balance reversal would require storing delta; omitted for simplicity.
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
     // TASK 4 – Queue: bill payments
-    // ═══════════════════════════════════════════════════════════════════════
     static void addBillPayment() {
         System.out.print("Bill name (e.g. Electricity Bill): ");
         String bill = scanner.nextLine().trim();
@@ -251,9 +232,7 @@ public class Main {
         }
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
     // TASK 5 – Queue: account opening requests
-    // ═══════════════════════════════════════════════════════════════════════
     static void submitAccountRequest() {
         System.out.print("Your name: ");
         String name = scanner.nextLine().trim();
@@ -280,9 +259,7 @@ public class Main {
         System.out.println("Approved! Account created: " + newAcc);
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
     // ATM helpers
-    // ═══════════════════════════════════════════════════════════════════════
     static void balanceEnquiry() {
         System.out.print("Enter username: ");
         String name = scanner.nextLine().trim();
@@ -291,9 +268,7 @@ public class Main {
         else            System.out.println("Account not found.");
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
     // Utility
-    // ═══════════════════════════════════════════════════════════════════════
     static BankAccount findByUsername(String name) {
         for (BankAccount ba : accounts)
             if (ba.getUsername().equalsIgnoreCase(name)) return ba;
