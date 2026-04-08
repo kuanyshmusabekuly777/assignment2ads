@@ -1,22 +1,27 @@
-public class BankAccount {
-    private String accountNumber;
-    private String username;
-    private double balance;
+class BankAccount {
+    int accountNumber;
+    String username;
+    double balance;
 
-    public BankAccount(String accountNumber, String username, double balance) {
+    public BankAccount(int accountNumber, String username, double balance) {
         this.accountNumber = accountNumber;
         this.username = username;
         this.balance = balance;
     }
 
-    public String getAccountNumber() { return accountNumber; }
-    public String getUsername()      { return username; }
-    public double getBalance()       { return balance; }
-    public void setBalance(double balance) { this.balance = balance; }
+    public void deposit(double amount) {
+        balance += amount;
+    }
 
-    @Override
-    public String toString() {
-        return "Account[" + accountNumber + "] " + username + " -- Balance: " + (int) balance;
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Not enough money!");
+        }
+    }
+
+    public void display() {
+        System.out.println(username + " – Balance: " + balance);
     }
 }
- 
